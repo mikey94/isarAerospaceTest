@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const useOutsideClick = (callback: () => void) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -30,6 +30,28 @@ function useOutsideAlerter(ref: any, ref2:any, onOutSideClick: () => void) {
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }, [onOutSideClick, ref]);
-  }
+};
 
-export { useOutsideClick, useOutsideAlerter };
+function useWs(url: string) {
+  const [isReady, setIsReady] = useState<boolean>(false)
+  const [val, setVal] = useState(null)
+
+  const ws = useRef<any>(null)
+
+  useEffect(() => {
+    const socket = new WebSocket(url)
+    socket.onopen = () => setIsReady(true)
+    socket.onclose = () => setIsReady(false)
+    socket.onmessage = (event) => setVal(event.data)
+
+    ws.current = socket
+
+    return () => {
+      socket.close();
+    }
+  })
+
+  return [isReady, val, ws.current?.send.bind(ws.current)]
+}
+
+export { useOutsideClick, useOutsideAlerter, useWs };
