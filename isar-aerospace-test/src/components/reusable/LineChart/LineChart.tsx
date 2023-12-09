@@ -8,17 +8,16 @@ interface LineChartProps {
   width: number;
   height: number;
   data: DataPoint[];
+  color: string
 };
 
-export const LineChart = ({ width=400, height=200, data }: LineChartProps) => {
+export const LineChart = ({ width=400, height=200, data, color}: LineChartProps) => {
   const axesRef = useRef(null);
   const boundsWidth = width - MARGIN.right - MARGIN.left;
   const boundsHeight = height - MARGIN.top - MARGIN.bottom;
 
   // Y axis
   const [min, max] = d3.extent(data, (d) => d.y);
-  console.log('min', min)
-  console.log('max', max)
   const yScale = useMemo(() => {
     return d3
       .scaleLinear()
@@ -68,7 +67,7 @@ export const LineChart = ({ width=400, height=200, data }: LineChartProps) => {
           <path
             d={linePath}
             opacity={1}
-            stroke="#9a6fb0"
+            stroke={color}
             fill="none"
             strokeWidth={2}
           />

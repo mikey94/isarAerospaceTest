@@ -1,0 +1,146 @@
+@import '../../utils/colors/colors.scss';
+
+.controller-wrapper-one {
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: $dark-blue;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.on-time-content-wrapper-one {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.velocity-wrapper-one {
+    display: flex;
+    border: 2px solid $red;
+    width: 200px;
+    height: 200px;
+    min-width: 150px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    color: $white;
+}
+
+.altitude-wrapper-one {
+    display: flex;
+    border: 2px solid $blue;
+    width: 200px;
+    height: 200px;
+    min-width: 150px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    color: $white;
+    text-align: center;
+}
+
+.temperature-wrapper-one {
+    display: flex;
+    border: 2px solid $yellow;
+    width: 200px;
+    height: 200px;
+    min-width: 150px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    color: $white;
+    text-align: center;
+}
+
+.status-wrapper-one {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid $green;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 700px;
+    padding: 10px;
+    margin: 10px;
+    color: $white;
+    .status-message-one {
+        color: red;
+        margin-left: 10px;
+    }
+}
+
+.asc-status-wrapper-one {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid $green;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    color: $white;
+    .asc-status-message-one {
+        color: red;
+        margin-left: 10px;
+    }
+}
+
+.row-wrapper-one {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cta-btn-wrapper-one {
+    border: 2px solid $green;
+    margin: 10px;
+    .cta-btn-one {
+        width: 200px;
+        height: 60px;
+        margin: 10px;
+        background-color: $red;
+        color: $white;
+        font-size: 18px;
+        font-weight: 700;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }:hover {
+        background-color: $yellow;
+    }
+}
+
+.chart-wrapper-one {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.velocity-graph-wrapper-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $green;
+    padding: 10px;
+    margin: 10px;
+    color: $white;
+}
+
+.altitude-graph-wrapper-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $green;
+    padding: 10px;
+    margin: 10px;
+    color: $white;
+}
