@@ -2,6 +2,8 @@
 
 ## Available Scripts
 
+Please run `npm install` before run the project.
+
 In the project directory, you can run:
 
 ### `npm run start`
