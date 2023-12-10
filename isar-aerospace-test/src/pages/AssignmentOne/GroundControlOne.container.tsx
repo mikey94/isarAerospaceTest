@@ -19,6 +19,7 @@ function GroundControl() {
   const [spectrumData, setSpectrumData] = useState<Array<SpectrumData>>([]);
   const [dataVToT, setDataVToT] = useState<Array<ChartObj>>([]);
   const [dataAToT, setDataAToT] = useState<Array<ChartObj>>([]);
+  const [dataTToT, setDataTToT] = useState<Array<ChartObj>>([]);
 
   async function checkSpectrumStatus () {
     const response = getSpectrumStatus()
@@ -26,6 +27,7 @@ function GroundControl() {
     setSpectrumData([...spectrumData, result])
     generateVelocityToTimeCanvas(result)
     generateAltitudeToTimeCanvas(result)
+    generateTemperatureToTimeCanvas(result)
   }
 
   useEffect(() => {
@@ -76,6 +78,14 @@ function GroundControl() {
     return false
   }
 
+  function getActionRequired() {
+    if(spectrumData.length) {
+      const { isActionRequired } = spectrumData[spectrumData.length -1]
+      return isActionRequired
+    }
+    return false
+  }
+
   function generateVelocityToTimeCanvas(val: any) {
     const obj = {
       y: parseInt(val.velocity),
@@ -91,6 +101,15 @@ function GroundControl() {
     }
     setDataAToT([...dataAToT, obj])
   }
+
+  function generateTemperatureToTimeCanvas(val: any) {
+    const obj = {
+      y: parseInt(val.temperature),
+      x: Math.round((Date.now() - startTime) / 500)
+    }
+    setDataTToT([...dataTToT, obj])
+  }
+
   return (
     <GroundControlOneView 
       currentVelocity={getCurrentVelocity()} 
@@ -98,9 +117,11 @@ function GroundControl() {
       currentTemperature={getCurrentTemperature()}
       currentStatus={getCurrentStatus()}
       currentAscendingStatus={getCurrentAscStatus()}
+      currentActionStatus={getActionRequired()}
       onSpectrumStatus={requestNewSpectrumStatus}
       velocityToTimeData={dataVToT}
       altitudeToTimeData={dataAToT}
+      temperatureToTimeData={dataTToT}
     />
   )
 }
