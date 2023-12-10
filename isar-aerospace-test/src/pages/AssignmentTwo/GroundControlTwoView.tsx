@@ -16,6 +16,7 @@ interface IGroundControlTwoView {
   currentTemperature: number,
   statusMessage: string,
   isAscending: boolean,
+  currentActionStatus: boolean,
   onActOnSpectrum: () => void,
 }
 
@@ -27,14 +28,16 @@ function GroundControlTwoView({
   currentAltitude, 
   currentTemperature, 
   statusMessage, 
-  isAscending, 
+  isAscending,
+  currentActionStatus,
   onActOnSpectrum 
-}: IGroundControlTwoView) {
+}: Readonly<IGroundControlTwoView>) {
   function onPressActOnSpectrum() {
     onActOnSpectrum();
   }
   return (
     <div className='controller-wrapper-two'>
+      <p className='group-title-one'>Live data</p>
       <div className='on-time-content-wrapper-two'>
         <div className='velocity-wrapper-two'>
           <p>Spectrum velocity (unit)</p>
@@ -58,24 +61,29 @@ function GroundControlTwoView({
               <p>Ascending status: </p>
               <p className='asc-status-message-two'>{`${isAscending}`}</p>
             </div>
+            <div className='asc-status-wrapper-two'>
+              <p>Action required: </p>
+              <p className='asc-status-message-two'>{`${currentActionStatus}`}</p>
+            </div>
             <div className='cta-btn-wrapper-two'>
-              <button className='cta-btn-two' onClick={onPressActOnSpectrum}>ActOnSpectrum</button>
+              <button disabled={!currentActionStatus} className={`${currentActionStatus ? 'cta-btn-two-dark': 'cta-btn-two'}`} onClick={onPressActOnSpectrum}>ActOnSpectrum</button>
             </div>
           </div>
         </div>
       </div>
+      <p className='group-title-one'>Live Spectrum stats</p>
       <div className='chart-wrapper-two'>
         <div className='velocity-graph-wrapper-two'>
           <p>Spectrum velocity variation</p>
-          <LineChart data={velocityToTimeData} width={450} height={300} color='#E3504D'/>
+          <LineChart data={velocityToTimeData} width={440} height={300} color='#E3504D'/>
         </div>
         <div className='altitude-graph-wrapper-two'>
           <p>Spectrum altitude variation</p>
-          <LineChart data={altitudeToTimeData} width={450} height={300} color='#01B4BB'/>
+          <LineChart data={altitudeToTimeData} width={440} height={300} color='#01B4BB'/>
         </div>
         <div className='temperature-graph-wrapper-two'>
           <p>Spectrum temperature variation</p>
-          <LineChart data={temperatureToTimeData} width={450} height={300} color='#FFA500'/>
+          <LineChart data={temperatureToTimeData} width={440} height={300} color='#FFA500'/>
         </div>
       </div>
     </div>

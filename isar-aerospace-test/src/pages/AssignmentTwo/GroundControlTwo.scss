@@ -10,16 +10,28 @@
     overflow: hidden;
 }
 
+.group-title-one {
+    color: $white;
+    margin: 10px;
+    font-weight: 600;
+}
+
 .chart-wrapper-two {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: 2px solid $white;
+    margin: 10px;
+    padding: 10px;
 }
 
 .on-time-content-wrapper-two {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: 2px solid $white;
+    margin: 10px;
+    padding: 10px;
 }
 
 .velocity-wrapper-two {
@@ -71,7 +83,6 @@
     justify-content: center;
     align-items: center;
     height: 60px;
-    width: 700px;
     padding: 10px;
     margin: 10px;
     color: $white;
@@ -151,6 +162,20 @@
         height: 60px;
         margin: 10px;
         background-color: $red;
+        color: $white;
+        font-size: 18px;
+        font-weight: 700;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }:hover {
+        background-color: $yellow;
+    }
+    .cta-btn-two-dark {
+        width: 200px;
+        height: 60px;
+        margin: 10px;
+        background-color: $dark-red;
         color: $white;
         font-size: 18px;
         font-weight: 700;

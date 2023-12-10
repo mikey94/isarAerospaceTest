@@ -103,6 +103,14 @@ function GroundControl() {
     return false
   }
 
+  function getActionRequired() {
+    if(spectrumData.length) {
+      const { IsActionRequired } = spectrumData[spectrumData.length -1]
+      return IsActionRequired
+    }
+    return false
+  }
+
   return (
     <GroundControlTwoView 
       velocityToTimeData={dataVToT} 
@@ -113,6 +121,7 @@ function GroundControl() {
       currentTemperature={getCurrentTemperature()}
       statusMessage={getCurrentStatusMessage()}
       isAscending={getAscendingStatus()}
+      currentActionStatus={getActionRequired()}
       onActOnSpectrum={onActSpectrumRequest}
     />
   )
