@@ -19,3 +19,15 @@ when <i>IsActionRequired</i> is in a false state. ActOnSpectrum button is disabl
 The last one is when <i>IsActionRequired</i> is in a true state. When this happens, the ActOnSpectrum button will be enabled and displayed in bright red.
 
 ![Screenshot 2023-12-10 at 09 53 11](https://github.com/mikey94/isarAerospaceTest/assets/31029159/34995256-b3f5-43ab-9626-4c60eafd32f7)
+
+
+<ins>Assignment C - Comments about API improvements and code structure</ins>
+
+1). It's better to have a similar format shared between each endpoint. As an example response from endpoint <I>SpectrumStatus</I> we are getting all lowercase key format but In SpectrumWS keys are capitalized.
+
+2). Adding extra security for API requests. Example:- Sending Authorization token with get request. 
+
+3). Add versioning for API.
+
+4). Add better documentation. Currently, API returns values but it doesn't mention any information regarding the units it uses. Example:- Velocity(m/s, km/h), Temperature(Celcius/F)
+
